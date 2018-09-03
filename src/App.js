@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Map, GoogleApiWrapper} from 'google-maps-react'
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react'
 import './App.css'
 
 export class App extends Component {
@@ -18,6 +18,10 @@ export class App extends Component {
             lat: 51.227741,
             lng: 6.773456
           }}>
+          <Marker
+            title={'Some marker.'}
+            name={'Marker'}
+            position={{lat: 51.227741, lng: 6.773456}} />
       </Map>
     );
   }

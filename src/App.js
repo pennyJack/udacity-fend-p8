@@ -5,14 +5,14 @@ import './App.css'
 
 export class App extends Component {
   state = {
-    places: []
+    sights: []
   }
 
-  getPlaces = () => {
+  getSights = () => {
     LocationAPI.getLocation("Düsseldorf", "movie theater")
     .then(data => {
-      this.setState({places: data.response.groups[0].items})
-      console.log(this.state.places)
+      this.setState({sights: data.response.groups[0].items})
+      console.log(this.state.sights)
     })
   }
 
@@ -24,17 +24,20 @@ export class App extends Component {
     return (
       <Map
         google={this.props.google}
-        onReady={this.getPlaces}
+        onReady={this.getSights}
         style={style}
         zoom={13}
         initialCenter={{
             lat: 51.227741,
             lng: 6.773456
           }}>
-          <Marker
-            title={'Some marker.'}
-            name={'Marker'}
-            position={{lat: 51.227741, lng: 6.773456}} />
+          {this.state.sights.map(sight => (
+            <Marker
+              key={sight.venue.id}
+              title={'Some marker.'}
+              name={'Marker'}
+              position={{lat: sight.venue.location.lat, lng: sight.venue.location.lng}} />
+          ))}
       </Map>
     );
   }

@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import {Map, Marker, GoogleApiWrapper} from 'google-maps-react'
+import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react'
 import * as LocationAPI from './LocationAPI'
 import './App.css'
 
 export class App extends Component {
   state = {
-    sights: []
+    sights: [],
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
   }
 
   getSights = () => {
@@ -16,15 +19,36 @@ export class App extends Component {
     })
   }
 
+  onMarkerClick = (props, marker, e) => {
+    //fix: if activeMarker is already open (visible), close activeMarker and
+    //open InfoWindow from marker which is clicked on
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: !this.state.showingInfoWindow
+    })
+  }
+
+  onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  }
+
   render() {
     const style = {
       width: '100%',
       height: '100%'
     }
+    console.log(this.state.selectedPlace, this.state.activeMarker)
     return (
       <Map
         google={this.props.google}
         onReady={this.getSights}
+        onClick={this.onMapClicked}
         style={style}
         zoom={13}
         initialCenter={{
@@ -34,10 +58,19 @@ export class App extends Component {
           {this.state.sights.map(sight => (
             <Marker
               key={sight.venue.id}
-              title={'Some marker.'}
-              name={'Marker'}
-              position={{lat: sight.venue.location.lat, lng: sight.venue.location.lng}} />
+              title={sight.venue.name}
+              address={sight.venue.location.address}
+              position={{lat: sight.venue.location.lat, lng: sight.venue.location.lng}}
+              onClick={this.onMarkerClick} />
           ))}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}>
+            <div>
+              <h1>{this.state.selectedPlace.title}</h1>
+              <p>{this.state.selectedPlace.address}</p>
+            </div>
+          </InfoWindow>
       </Map>
     );
   }

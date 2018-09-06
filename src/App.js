@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react'
+import GoogleMap from './GoogleMap'
 import * as LocationAPI from './LocationAPI'
 import './App.css'
 
-export class App extends Component {
+class App extends Component {
   state = {
     sights: [],
     showingInfoWindow: false,
@@ -39,43 +39,19 @@ export class App extends Component {
   }
 
   render() {
-    const style = {
-      width: '100%',
-      height: '100%'
-    }
-    console.log(this.state.selectedPlace, this.state.activeMarker)
     return (
-      <Map
-        google={this.props.google}
-        onReady={this.getSights}
-        onClick={this.onMapClicked}
-        style={style}
-        zoom={13}
-        initialCenter={{
-            lat: 51.227741,
-            lng: 6.773456
-          }}>
-          {this.state.sights.map(sight => (
-            <Marker
-              key={sight.venue.id}
-              title={sight.venue.name}
-              address={sight.venue.location.address}
-              position={{lat: sight.venue.location.lat, lng: sight.venue.location.lng}}
-              onClick={this.onMarkerClick} />
-          ))}
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}>
-            <div>
-              <h1>{this.state.selectedPlace.title}</h1>
-              <p>{this.state.selectedPlace.address}</p>
-            </div>
-          </InfoWindow>
-      </Map>
-    );
+      <div>
+        <GoogleMap
+          sights={this.state.sights}
+          showingInfoWindow={this.state.showingInfoWindow}
+          activeMarker={this.state.activeMarker}
+          selectedPlace={this.state.selectedPlace}
+          getSights={this.getSights}
+          onMarkerClick={this.onMarkerClick}
+          onMapClicked={this.onMapClicked} />
+      </div>
+    )
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-})(App)
+export default App

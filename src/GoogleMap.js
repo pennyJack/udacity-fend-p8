@@ -9,7 +9,7 @@ const GoogleMap = props => {
     height: '100%'
   }
 
-  console.log(selectedPlace, activeMarker)
+  //console.log(selectedPlace, activeMarker)
 
   return (
     <Map

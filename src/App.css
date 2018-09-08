@@ -1,4 +1,29 @@
-.map {
-  width: 100vw;
+/*****Main Content*****/
+
+#mainContent {
+  display: flex;
+}
+
+/*****List View*****/
+
+
+.listView {
+  width: 30%;
+  height: 100vh;
+  padding: 10px;
+}
+
+#filter {
+  width: 100%;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.googleMap {
+  position: relative;
+  width: 70%;
   height: 100vh;
 }

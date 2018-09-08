@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GoogleMap from './GoogleMap'
+import ListView from './ListView'
 import * as LocationAPI from './LocationAPI'
 import './App.css'
 
@@ -40,7 +41,11 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <main id="mainContent">
+        <ListView
+          sights={this.state.sights}
+        />
+        <div className="googleMap">
         <GoogleMap
           sights={this.state.sights}
           showingInfoWindow={this.state.showingInfoWindow}
@@ -49,7 +54,8 @@ class App extends Component {
           getSights={this.getSights}
           onMarkerClick={this.onMarkerClick}
           onMapClicked={this.onMapClicked} />
-      </div>
+        </div>
+      </main>
     )
   }
 }

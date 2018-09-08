@@ -3,21 +3,44 @@ import GoogleMap from './GoogleMap'
 import ListView from './ListView'
 import * as LocationAPI from './LocationAPI'
 import './App.css'
+import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 
 class App extends Component {
   state = {
     sights: [],
+    filteredSights: [],
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {}
   }
 
   getSights = () => {
-    LocationAPI.getLocation("Düsseldorf", "movie theater")
+    LocationAPI.getLocation("Düsseldorf", "pizza")
     .then(data => {
-      this.setState({sights: data.response.groups[0].items})
+      this.setState({
+        sights: data.response.groups[0].items.sort(sortBy('venue.name'))
+      })
+      this.setState({
+        filteredSights: data.response.groups[0].items.sort(sortBy('venue.name'))
+      })
       console.log(this.state.sights)
     })
+  }
+
+  filterSights = (query) => {
+    if(query) {
+      console.log(query)
+      const match = new RegExp(escapeRegExp(query), 'i')
+      this.setState(state => ({
+        filteredSights: state.sights
+        .filter((sight) => match.test(sight.venue.name))
+      }))
+    } else {
+      this.setState(state => ({
+        filteredSights: state.sights
+      }))
+    }
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -43,11 +66,12 @@ class App extends Component {
     return (
       <main id="mainContent">
         <ListView
-          sights={this.state.sights}
+          filteredSights={this.state.filteredSights}
+          filterSights={this.filterSights}
         />
         <div className="googleMap">
         <GoogleMap
-          sights={this.state.sights}
+          filteredSights={this.state.filteredSights}
           showingInfoWindow={this.state.showingInfoWindow}
           activeMarker={this.state.activeMarker}
           selectedPlace={this.state.selectedPlace}

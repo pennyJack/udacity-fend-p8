@@ -3,13 +3,11 @@ import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react'
 
 const GoogleMap = props => {
 
-  const {google, sights, showingInfoWindow, activeMarker, selectedPlace, getSights, onMarkerClick, onMapClicked} = props
+  const {google, filteredSights, showingInfoWindow, activeMarker, selectedPlace, getSights, onMarkerClick, onMapClicked} = props
   const style = {
     width: '100%',
     height: '100%'
   }
-
-  //console.log(selectedPlace, activeMarker)
 
   return (
     <Map
@@ -22,7 +20,7 @@ const GoogleMap = props => {
           lat: 51.227741,
           lng: 6.773456
         }}>
-        {sights.map(sight => (
+        {filteredSights.map(sight => (
           <Marker
             key={sight.venue.id}
             title={sight.venue.name}

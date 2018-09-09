@@ -23,9 +23,11 @@ const GoogleMap = props => {
         {filteredSights.map(sight => (
           <Marker
             key={sight.venue.id}
+            id={sight.venue.id}
             title={sight.venue.name}
             address={sight.venue.location.address}
             position={{lat: sight.venue.location.lat, lng: sight.venue.location.lng}}
+            animation={activeMarker ? (sight.venue.id === activeMarker.id ? 1 : 0) : 0}
             onClick={onMarkerClick} />
         ))}
         <InfoWindow

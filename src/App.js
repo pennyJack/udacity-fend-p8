@@ -11,7 +11,7 @@ class App extends Component {
     sights: [],
     filteredSights: [],
     showingInfoWindow: false,
-    activeMarker: {},
+    activeMarker: null,
     selectedPlace: {}
   }
 
@@ -46,9 +46,10 @@ class App extends Component {
   onMarkerClick = (props, marker, e) => {
     //fix: if activeMarker is already open (visible), close activeMarker and
     //open InfoWindow from marker which is clicked on
+    //console.log(props, marker)
     this.setState({
       selectedPlace: props,
-      activeMarker: marker,
+      activeMarker: this.state.activeMarker ? null : marker,
       showingInfoWindow: !this.state.showingInfoWindow
     })
   }
@@ -63,6 +64,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.activeMarker)
     return (
       <main id="mainContent">
         <ListView

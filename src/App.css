@@ -20,6 +20,15 @@
 .list {
   list-style-type: none;
   padding: 0;
+  text-align: center;
+}
+
+.listItem {
+  padding: 10px;
+}
+
+.listItem:hover {
+  cursor: pointer;
 }
 
 .googleMap {

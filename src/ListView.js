@@ -14,24 +14,24 @@ class ListView extends Component {
   }
 
   render() {
-    const {filteredSights} = this.props
+    const {filteredSights, onListClick} = this.props
     const {query} = this.state
 
     return(
       <nav className="listView">
         <h2 className="heading">10 best Pizza places in town!</h2>
-        <label htmlFor="filter">Filter your results!</label>
+        <label htmlFor="searchbox">Filter your results!</label>
         <input
-          id="filter"
+          id="searchbox"
           type="text"
           value={query}
           placeholder="Filter restaurants by name"
           onChange={this.filter}
           />
-          <ul className="list">
-            {filteredSights.map((sight, index) => {
+          <ul className="list" onClick={(e) => onListClick(filteredSights, e)}>
+            {filteredSights.map((sight) => {
               return <ListItem
-                key={index}
+                key={sight.venue.id}
                 name={sight.venue.name}
               />
             })}

@@ -46,12 +46,21 @@ class App extends Component {
   onMarkerClick = (props, marker, e) => {
     //fix: if activeMarker is already open (visible), close activeMarker and
     //open InfoWindow from marker which is clicked on
-    //console.log(props, marker)
     this.setState({
       selectedPlace: props,
       activeMarker: this.state.activeMarker ? null : marker,
       showingInfoWindow: !this.state.showingInfoWindow
     })
+  }
+
+  onListClick = (props, e) => {
+    //fix: when switching to Samsung Galaxy S5 device mode, selecting
+    //markers by clicking on the List doesn't work properly
+    let marker = document.querySelectorAll('.gmnoprint map area')
+    marker = [...marker].filter(marker => {
+      return marker.title === e.target.innerHTML
+    })
+    marker.forEach(marker => marker.click())
   }
 
   onMapClicked = (props) => {
@@ -64,12 +73,12 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.activeMarker)
     return (
       <main id="mainContent">
         <ListView
           filteredSights={this.state.filteredSights}
           filterSights={this.filterSights}
+          onListClick={this.onListClick}
         />
         <div className="googleMap">
         <GoogleMap

@@ -6,7 +6,7 @@ const credentials = {
 }
 
 export const getLocation = (town, query) =>
-  fetch(`${api}?client_id=${credentials.clientId}&client_secret=${credentials.clientSecret}&v=20180323&limit=10&near=${town}&query=${query}`)
+  fetch(`${api}?client_id=${credentials.clientId}&client_secret=${credentials.clientSecret}&v=20180323&limit=15&near=${town}&query=${query}`)
   .then(response => {
     if (response.status !== 200) {
       alert('Looks like something went wrong. Status Code: ' + response.status)

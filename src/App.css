@@ -1,21 +1,34 @@
+/*****Header*****/
+.page-header{
+  height: 10vh;
+  background: #ccc;
+}
+
+.heading {
+  text-align: center;
+  margin: 0;
+  padding-top: 20px;
+}
+
 /*****Main Content*****/
 
-#mainContent {
+#main-content {
   display: flex;
+  height: 90vh;
 }
 
 /*****List View*****/
 
 
-.listView {
-  max-width: 250px;
-  height: 100vh;
-  padding: 0 10px;
+.list-view {
+  width: 40%;
+  padding: 10px 10px 0 10px;
   overflow-y: scroll;
 }
 
 #searchbox {
-  width: 100%;
+  width: 90%;
+  margin: 5px 0 0 5px;
 }
 
 .list {
@@ -24,15 +37,17 @@
   text-align: center;
 }
 
-.listItem {
+.list-item {
   padding: 10px;
 }
 
-.listItem:hover {
+.list-item:hover {
   cursor: pointer;
 }
 
-.googleMap {
+/*****Google Map*****/
+
+.google-map {
   position: relative;
   width: 100%;
 }

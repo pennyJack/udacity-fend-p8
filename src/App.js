@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Header from './Header'
 import GoogleMap from './GoogleMap'
 import ListView from './ListView'
 import * as LocationAPI from './LocationAPI'
@@ -74,23 +75,26 @@ class App extends Component {
 
   render() {
     return (
-      <main id="mainContent">
-        <ListView
-          filteredSights={this.state.filteredSights}
-          filterSights={this.filterSights}
-          onListClick={this.onListClick}
-        />
-        <div className="googleMap">
-        <GoogleMap
-          filteredSights={this.state.filteredSights}
-          showingInfoWindow={this.state.showingInfoWindow}
-          activeMarker={this.state.activeMarker}
-          selectedPlace={this.state.selectedPlace}
-          getSights={this.getSights}
-          onMarkerClick={this.onMarkerClick}
-          onMapClicked={this.onMapClicked} />
-        </div>
-      </main>
+      <div>
+        <Header />
+        <main id="main-content">
+          <ListView
+            filteredSights={this.state.filteredSights}
+            filterSights={this.filterSights}
+            onListClick={this.onListClick}
+          />
+          <div className="google-map">
+            <GoogleMap
+              filteredSights={this.state.filteredSights}
+              showingInfoWindow={this.state.showingInfoWindow}
+              activeMarker={this.state.activeMarker}
+              selectedPlace={this.state.selectedPlace}
+              getSights={this.getSights}
+              onMarkerClick={this.onMarkerClick}
+              onMapClicked={this.onMapClicked} />
+          </div>
+        </main>
+      </div>
     )
   }
 }

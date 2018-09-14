@@ -18,9 +18,8 @@ class ListView extends Component {
     const {query} = this.state
 
     return(
-      <nav className="listView">
-        <h2 className="heading">10 best Pizza places in town!</h2>
-        <label htmlFor="searchbox">Filter your results!</label>
+      <nav className="list-view">
+        <label htmlFor="searchbox"><i className="fas fa-search"></i></label>
         <input
           id="searchbox"
           type="text"

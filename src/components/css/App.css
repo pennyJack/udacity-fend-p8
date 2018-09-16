@@ -2,5 +2,13 @@
 
 #main-content {
   display: flex;
-  height: 90vh;
+  height: 85vh;
+}
+
+/*****Media Query*****/
+
+@media screen and (min-width: 600px) {
+  #main-content {
+    height: 90vh;
+  }
 }

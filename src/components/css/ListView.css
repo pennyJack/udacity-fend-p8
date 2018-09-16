@@ -1,7 +1,7 @@
 /*****List View*****/
 
 .list-view {
-  width: 250px;
+  width: 165px;
   padding: 10px 10px 0 10px;
   overflow-y: scroll;
 }
@@ -10,9 +10,15 @@
   display: none;
 }
 
+.filter {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  font-size: 1rem;
+}
+
 #searchbox {
-  width: 85%;
-  margin: 5px 0 0 5px;
+  width: 80%;
 }
 
 .list {
@@ -23,8 +29,27 @@
 
 .list-item {
   padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  margin: 5px 0;
+}
+
+.list-item:first-child {
+  margin-top: 0;
+}
+
+.list-item:last-child {
+  margin-bottom: 0;
 }
 
 .list-item:hover {
   cursor: pointer;
+}
+
+/*****Media Query*****/
+
+@media screen and (min-width: 600px) {
+  .list-view {
+    width: 250px;
+  }
 }

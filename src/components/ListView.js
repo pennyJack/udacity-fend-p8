@@ -22,16 +22,18 @@ class ListView extends Component {
 
     return(
       <nav className="list-view">
-        <label htmlFor="searchbox">
-          <FontAwesomeIcon icon={faSearch} />
-        </label>
-        <input
-          id="searchbox"
-          type="text"
-          value={query}
-          placeholder="Filter restaurants by name"
-          onChange={this.filter}
-        />
+        <div className="filter">
+          <label htmlFor="searchbox">
+            <FontAwesomeIcon icon={faSearch} />
+          </label>
+          <input
+            id="searchbox"
+            type="text"
+            value={query}
+            placeholder="Search by name"
+            onChange={this.filter}
+          />
+        </div>
         <ul className="list" onClick={(e) => onListClick(filteredSights, e)}>
           {filteredSights.map((sight) => {
             return (

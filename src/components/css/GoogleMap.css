@@ -2,9 +2,21 @@
 
 .google-map {
   position: relative;
-  width: calc(100% - 250px);
+  width: calc(100% - 165px);
 }
 
 .full-width {
   width: 100%;
+}
+
+/*****Media Query*****/
+
+@media screen and (min-width: 600px) {
+  .google-map {
+    width: calc(100% - 250px);
+  }
+
+  .full-width {
+    width: 100%;
+  }
 }

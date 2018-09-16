@@ -1,18 +1,32 @@
 /*****Header*****/
-.page-header{
-  height: 10vh;
-  background: #ccc;
+
+.page-header {
+  background: #F5B34F;
   display: flex;
+  color: #fff;
+  height: 15vh;
   justify-content: center;
   padding-top: 20px;
 }
 
-.fa-bars:hover {
+.hamburger {
   cursor: pointer;
+  padding-top: 2px;
+  text-align: center;
+  width: 10%;
 }
 
 .heading {
-  text-align: center;
   margin: 0;
+  text-align: center;
   width: 90%;
+}
+
+/*****Media Query*****/
+
+@media screen and (min-width: 600px) {
+  .page-header {
+    height: 10vh;
+    padding-top: 20px;
+  }
 }

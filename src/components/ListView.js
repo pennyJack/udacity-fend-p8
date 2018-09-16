@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ListItem from './ListItem'
+import './css/ListView.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 

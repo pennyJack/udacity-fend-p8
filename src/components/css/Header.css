@@ -1,0 +1,18 @@
+/*****Header*****/
+.page-header{
+  height: 10vh;
+  background: #ccc;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.fa-bars:hover {
+  cursor: pointer;
+}
+
+.heading {
+  text-align: center;
+  margin: 0;
+  width: 90%;
+}

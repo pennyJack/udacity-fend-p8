@@ -1,4 +1,5 @@
 import React from 'react'
+import './css/GoogleMap.css'
 import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react'
 
 const GoogleMap = props => {

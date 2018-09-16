@@ -1,0 +1,30 @@
+/*****List View*****/
+
+.list-view {
+  width: 250px;
+  padding: 10px 10px 0 10px;
+  overflow-y: scroll;
+}
+
+.non-visible {
+  display: none;
+}
+
+#searchbox {
+  width: 85%;
+  margin: 5px 0 0 5px;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.list-item {
+  padding: 10px;
+}
+
+.list-item:hover {
+  cursor: pointer;
+}

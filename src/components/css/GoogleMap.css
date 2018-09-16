@@ -1,0 +1,10 @@
+/*****Google Map*****/
+
+.google-map {
+  position: relative;
+  width: calc(100% - 250px);
+}
+
+.full-width {
+  width: 100%;
+}

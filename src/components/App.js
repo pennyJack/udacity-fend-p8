@@ -3,7 +3,7 @@ import Header from './Header'
 import GoogleMap from './GoogleMap'
 import ListView from './ListView'
 import * as LocationAPI from './LocationAPI'
-import './App.css'
+import './css/App.css'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 

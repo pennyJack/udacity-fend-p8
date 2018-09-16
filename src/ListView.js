@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import ListItem from './ListItem'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 class ListView extends Component {
   state = {
@@ -19,7 +21,9 @@ class ListView extends Component {
 
     return(
       <nav className="list-view">
-        <label htmlFor="searchbox"><i className="fas fa-search"></i></label>
+        <label htmlFor="searchbox">
+          <FontAwesomeIcon icon={faSearch} />
+        </label>
         <input
           id="searchbox"
           type="text"

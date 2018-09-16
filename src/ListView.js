@@ -30,14 +30,16 @@ class ListView extends Component {
           value={query}
           placeholder="Filter restaurants by name"
           onChange={this.filter}
-          />
-          <ul className="list" onClick={(e) => onListClick(filteredSights, e)}>
-            {filteredSights.map((sight) => {
-              return <ListItem
+        />
+        <ul className="list" onClick={(e) => onListClick(filteredSights, e)}>
+          {filteredSights.map((sight) => {
+            return (
+              <ListItem
                 key={sight.venue.id}
                 name={sight.venue.name}
               />
-            })}
+            )
+          })}
           </ul>
       </nav>
     )

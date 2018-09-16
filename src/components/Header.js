@@ -10,7 +10,6 @@ const Header = props => {
   const toggleListView = () => {
     const listView = document.querySelector('.list-view')
     const googleMap = document.querySelector('.google-map')
-    console.log(listView, googleMap)
     if (visible) {
       visible = false
       listView.classList.add('non-visible')

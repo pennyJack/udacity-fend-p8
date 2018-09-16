@@ -31,7 +31,6 @@ class App extends Component {
 
   filterSights = (query) => {
     if(query) {
-      console.log(query)
       const match = new RegExp(escapeRegExp(query), 'i')
       this.setState(state => ({
         filteredSights: state.sights
@@ -55,9 +54,10 @@ class App extends Component {
   }
 
   onListClick = (props, e) => {
-    //fix: when switching to Samsung Galaxy S5 device mode, selecting
-    //markers by clicking on the List doesn't work properly
-    let marker = document.querySelectorAll('.gmnoprint map area')
+    let desktopMarker = document.querySelectorAll('.gmnoprint map area')
+    let mobileMarker = document.querySelectorAll('.gmnoprint')
+    let marker = desktopMarker[0] ? desktopMarker : mobileMarker
+
     marker = [...marker].filter(marker => {
       return marker.title === e.target.innerHTML
     })

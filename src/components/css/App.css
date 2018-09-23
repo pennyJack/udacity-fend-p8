@@ -8,7 +8,12 @@
 /*****Error Message*****/
 
 .error-container {
-  margin-top: 5em;
+  margin-top: 20vh;
+  text-align: center;
+}
+
+.error-container-map {
+  width: calc(100% - 250px);
 }
 
 .error-msg {

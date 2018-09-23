@@ -10,37 +10,46 @@ const GoogleMap = props => {
     height: '100%'
   }
 
-  return (
-    <Map
-      google={google}
-      onReady={getSights}
-      onClick={onMapClicked}
-      style={style}
-      zoom={13}
-      initialCenter={{
-          lat: 51.227741,
-          lng: 6.773456
-      }}>
-      {filteredSights.map(sight => (
-        <Marker
-          key={sight.venue.id}
-          id={sight.venue.id}
-          title={sight.venue.name}
-          address={sight.venue.location.address}
-          position={{lat: sight.venue.location.lat, lng: sight.venue.location.lng}}
-          animation={activeMarker ? (sight.venue.id === activeMarker.id ? 1 : 0) : 0}
-          onClick={onMarkerClick} />
-      ))}
-      <InfoWindow
-        marker={activeMarker}
-        visible={showingInfoWindow}>
-        <div>
-            <h1>{selectedPlace.title}</h1>
-            <p>{selectedPlace.address}</p>
-          </div>
-        </InfoWindow>
-    </Map>
-  )
+  //Error handling in case maps doesn't load (google = null)
+  if (!google) {
+    return (
+      <div className="error-container">
+        <h2 className="error-msg">Failed to load map! Try to refresh page.</h2>
+      </div>
+    )
+  } else {
+    return (
+      <Map
+        google={google}
+        onReady={getSights}
+        onClick={onMapClicked}
+        style={style}
+        zoom={13}
+        initialCenter={{
+            lat: 51.227741,
+            lng: 6.773456
+        }}>
+        {filteredSights.map(sight => (
+          <Marker
+            key={sight.venue.id}
+            id={sight.venue.id}
+            title={sight.venue.name}
+            address={sight.venue.location.address}
+            position={{lat: sight.venue.location.lat, lng: sight.venue.location.lng}}
+            animation={activeMarker ? (sight.venue.id === activeMarker.id ? 1 : 0) : 0}
+            onClick={onMarkerClick} />
+        ))}
+        <InfoWindow
+          marker={activeMarker}
+          visible={showingInfoWindow}>
+          <div>
+              <h1>{selectedPlace.title}</h1>
+              <p>{selectedPlace.address}</p>
+            </div>
+          </InfoWindow>
+      </Map>
+    )
+  }
 }
 
 export default GoogleApiWrapper({

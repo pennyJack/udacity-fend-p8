@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   getSights = () => {
-    LocationAPI.getLocation("Düsseldorf", "pizza")
+    LocationAPI.getLocation()
     .then(data => {
       this.setState({
         sights: data.response.groups[0].items.sort(sortBy('venue.name'))
@@ -26,6 +26,16 @@ class App extends Component {
         filteredSights: data.response.groups[0].items.sort(sortBy('venue.name'))
       })
       console.log(this.state.sights)
+    })
+    .catch(err => {
+      const listView = document.querySelector('.list-view')
+      const errorMsg = document.createElement('div')
+      errorMsg.className = 'error-container'
+      errorMsg.innerHTML = (
+        `<h3>Failed to fetch places!</h3>
+         <p class="error-msg">${err}</p>`
+      )
+      listView.appendChild(errorMsg)
     })
   }
 

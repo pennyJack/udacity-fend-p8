@@ -5,6 +5,16 @@
   height: 85vh;
 }
 
+/*****Error Message*****/
+
+.error-container {
+  margin-top: 5em;
+}
+
+.error-msg {
+  color: #f00;
+}
+
 /*****Media Query*****/
 
 @media screen and (min-width: 600px) {

@@ -20,21 +20,21 @@ const GoogleMap = props => {
       initialCenter={{
           lat: 51.227741,
           lng: 6.773456
-        }}>
-        {filteredSights.map(sight => (
-          <Marker
-            key={sight.venue.id}
-            id={sight.venue.id}
-            title={sight.venue.name}
-            address={sight.venue.location.address}
-            position={{lat: sight.venue.location.lat, lng: sight.venue.location.lng}}
-            animation={activeMarker ? (sight.venue.id === activeMarker.id ? 1 : 0) : 0}
-            onClick={onMarkerClick} />
-        ))}
-        <InfoWindow
-          marker={activeMarker}
-          visible={showingInfoWindow}>
-          <div>
+      }}>
+      {filteredSights.map(sight => (
+        <Marker
+          key={sight.venue.id}
+          id={sight.venue.id}
+          title={sight.venue.name}
+          address={sight.venue.location.address}
+          position={{lat: sight.venue.location.lat, lng: sight.venue.location.lng}}
+          animation={activeMarker ? (sight.venue.id === activeMarker.id ? 1 : 0) : 0}
+          onClick={onMarkerClick} />
+      ))}
+      <InfoWindow
+        marker={activeMarker}
+        visible={showingInfoWindow}>
+        <div>
             <h1>{selectedPlace.title}</h1>
             <p>{selectedPlace.address}</p>
           </div>

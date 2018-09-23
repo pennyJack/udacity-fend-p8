@@ -4,7 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 const Header = props => {
-  //does it matter if I use a variable instead of state here?
+  /* Does it matter if I use a variable instead of state here?
+  I only use the variable for a specific purpose and don't pass it to another
+  component. --> The function probably has to be put in a parent component:
+  https://reactjs.org/docs/faq-styling.html */
   let visible = true
 
   const toggleListView = () => {

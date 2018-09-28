@@ -13,7 +13,6 @@ const Header = props => {
   const toggleListView = (e) => {
     /*Why is the event logged twice to the console when I press 'Enter' or
     'Space' using a button native html element? -> Implemented div as button*/
-    console.log(e.type)
     if (e.charCode === 32 || e.charCode === 13 || e.type === "click") {
       const listView = document.querySelector('.list-view')
       const googleMap = document.querySelector('.google-map')
@@ -31,7 +30,6 @@ const Header = props => {
       }
     }
   }
-
 
   return (
     <header className="page-header">

@@ -5,7 +5,6 @@
   width: calc(100% - 165px);
 }
 
-/*fix: redundant class -> same code exists twice!*/
 .full-width {
   width: 100%;
 }

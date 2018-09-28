@@ -25,7 +25,6 @@ class App extends Component {
       this.setState({
         filteredSights: data.response.groups[0].items.sort(sortBy('venue.name'))
       })
-      console.log(this.state.sights)
     })
     .catch(err => {
       const listView = document.querySelector('.list-view')
@@ -54,8 +53,6 @@ class App extends Component {
   }
 
   onMarkerClick = (props, marker, e) => {
-    //fix: if activeMarker is already open (visible), close activeMarker and
-    //open InfoWindow from marker which is clicked on
     this.setState({
       selectedPlace: props,
       activeMarker: this.state.activeMarker ? null : marker,

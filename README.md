@@ -20,6 +20,12 @@ To run the app with Service Worker:
 * `npm install -g serve`
 * `serve -s build` (server runs on http://localhost:5000)
 
+**Note that you need both an API Key for Google Maps and Foursquare to run the app.**
+
+* [Get an API Key for Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key)
+* [Get an API Key for Foursquare](https://developer.foursquare.com/docs/api)
+* Place the Keys in the appropriate components (/src/components/GoogleMap.js & LocationAPI.js)
+
 ## Built With
 
 * [React Framework](https://reactjs.org/)

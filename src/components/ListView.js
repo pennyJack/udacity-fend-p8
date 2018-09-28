@@ -28,13 +28,18 @@ class ListView extends Component {
           </label>
           <input
             id="searchbox"
-            type="text"
+            type="search"
+            aria-label="Search for places by name"
             value={query}
             placeholder="Search by name"
             onChange={this.filter}
           />
         </div>
-        <ul className="list" onClick={(e) => onListClick(filteredSights, e)}>
+        <ul className="list"
+          aria-label="List of recommended places"
+          onClick={(e) => onListClick(filteredSights, e)}
+          onKeyPress={(e) => onListClick(filteredSights, e)}
+        >
           {filteredSights.map((sight) => {
             return (
               <ListItem

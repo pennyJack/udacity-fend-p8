@@ -10,7 +10,7 @@ const GoogleMap = props => {
     height: '100%'
   }
 
-  //Error handling in case maps doesn't load (google = null)
+  //Error message in case maps doesn't load (google = null)
   if (!google) {
     return (
       <div className="error-container">

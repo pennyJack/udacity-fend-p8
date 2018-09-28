@@ -10,24 +10,41 @@ const Header = props => {
   https://reactjs.org/docs/faq-styling.html */
   let visible = true
 
-  const toggleListView = () => {
-    const listView = document.querySelector('.list-view')
-    const googleMap = document.querySelector('.google-map')
-    if (visible) {
-      visible = false
-      listView.classList.add('non-visible')
-      googleMap.classList.add('full-width')
-    } else {
-      visible = true
-      listView.classList.remove('non-visible')
-      googleMap.classList.remove('full-width')
+  const toggleListView = (e) => {
+    /*Why is the event logged twice to the console when I press 'Enter' or
+    'Space' using a button native html element? -> Implemented div as button*/
+    console.log(e.type)
+    if (e.charCode === 32 || e.charCode === 13 || e.type === "click") {
+      const listView = document.querySelector('.list-view')
+      const googleMap = document.querySelector('.google-map')
+      const button = document.querySelector('.hamburger')
+      if (visible) {
+        visible = false
+        listView.classList.add('non-visible')
+        googleMap.classList.add('full-width')
+        button.setAttribute('aria-expanded', 'false')
+      } else {
+        visible = true
+        listView.classList.remove('non-visible')
+        googleMap.classList.remove('full-width')
+        button.setAttribute('aria-expanded', 'true')
+      }
     }
   }
 
+
   return (
     <header className="page-header">
-      <div className="hamburger">
-        <FontAwesomeIcon icon={faBars} size="2x" onClick={toggleListView} />
+      <div
+        aria-label="toggle list"
+        aria-expanded="true"
+        className="hamburger"
+        onClick={toggleListView}
+        onKeyPress={toggleListView}
+        role="button"
+        tabIndex={0}
+      >
+        <FontAwesomeIcon icon={faBars} size="2x" />
       </div>
       <h1 className="heading">20 best Pizza places in Düsseldorf!</h1>
     </header>

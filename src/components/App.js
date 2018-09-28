@@ -64,14 +64,16 @@ class App extends Component {
   }
 
   onListClick = (props, e) => {
-    let desktopMarker = document.querySelectorAll('.gmnoprint map area')
-    let mobileMarker = document.querySelectorAll('.gmnoprint')
-    let marker = desktopMarker[0] ? desktopMarker : mobileMarker
+    if (e.charCode === 13 || e.type === "click") {
+      let desktopMarker = document.querySelectorAll('.gmnoprint map area')
+      let mobileMarker = document.querySelectorAll('.gmnoprint')
+      let marker = desktopMarker[0] ? desktopMarker : mobileMarker
 
-    marker = [...marker].filter(marker => {
-      return marker.title === e.target.innerHTML
-    })
-    marker.forEach(marker => marker.click())
+      marker = [...marker].filter(marker => {
+        return marker.title === e.target.innerHTML
+      })
+      marker.forEach(marker => marker.click())
+    }
   }
 
   onMapClicked = (props) => {
@@ -93,7 +95,7 @@ class App extends Component {
             filterSights={this.filterSights}
             onListClick={this.onListClick}
           />
-          <div className="google-map">
+          <div className="google-map" role="application" aria-label="Google Maps">
             <GoogleMap
               filteredSights={this.state.filteredSights}
               showingInfoWindow={this.state.showingInfoWindow}

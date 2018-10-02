@@ -12,6 +12,7 @@ To get the app up and running:
 * download or clone the repo: `git clone https://github.com/pennyJack/udacity-fend-p8-neighborhood-map-with-library`
 * `cd udacity-fend-p8-neighborhood-map-with-library`
 * install all project dependencies with `npm install`
+* replace each custom environment variable with the approriate api key (see below for futher instructions)
 * start the development server with `npm start` (server runs on http://localhost:3000)
 
 To run the app with Service Worker:
@@ -24,7 +25,10 @@ To run the app with Service Worker:
 
 * [Get an API Key for Google Maps](https://developers.google.com/maps/documentation/javascript/get-api-key)
 * [Get an API Key for Foursquare](https://developer.foursquare.com/docs/api)
-* Place the Keys in the appropriate components (/src/components/GoogleMap.js & LocationAPI.js)
+* Replace each custom environment variable with the approriate key:
+  1. /src/components/GoogleMap.js: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+  2. /src/components/LocationAPI.js: process.env.REACT_APP_FOURSQUARE_CLIENT_ID
+  3. /src/components/LocationAPI.js: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET
 
 ## Built With
 

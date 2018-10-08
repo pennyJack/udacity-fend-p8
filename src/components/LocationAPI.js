@@ -1,8 +1,8 @@
 const api = 'https://api.foursquare.com/v2/venues/explore'
 
 const params = {
-  clientId: process.env.REACT_APP_FOURSQUARE_CLIENT_ID,
-  clientSecret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET,
+  clientId: 'C1A4NZFFWZV4EMWAQ55OEP0HZG31JAZGMRMMSR0YOPRZMKKI',
+  clientSecret: '4KQ3DRG1A4MMY0R3LWXLQ0I5BNH0KPGCOOCX313TEQOL0HZK',
   limit: '20',
   town: 'Düsseldorf',
   query: 'pizza'

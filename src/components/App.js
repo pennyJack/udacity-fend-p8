@@ -16,6 +16,14 @@ class App extends Component {
     selectedPlace: {}
   }
 
+  componentDidMount() {
+    window.gm_authFailure = this.gm_authFailure
+  }
+
+  gm_authFailure() {
+    window.alert("Seems like there is a problem with authentication: for more info check the Chrome console by pressing ctrl+shift+i and follow the link!")
+  }
+
   getSights = () => {
     LocationAPI.getLocation()
     .then(data => {

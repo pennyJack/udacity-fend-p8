@@ -18,10 +18,21 @@ class App extends Component {
 
   componentDidMount() {
     window.gm_authFailure = this.gm_authFailure
+    this.getSights()
+    setTimeout(() => {
+      if (!document.querySelector('.gm-style')) {
+        const mapContainer = document.querySelector('.google-map')
+        const mapErrorMsg = mapContainer.firstChild
+        mapErrorMsg.className = 'error-container'
+        mapErrorMsg.innerHTML = (
+          "<h2 class='error-msg'>Couldn't load Google Maps! Try refreshing the page!</h2>"
+        )
+      }
+    }, 2000)
   }
 
   gm_authFailure() {
-    window.alert("Seems like there is a problem with authentication: for more info check the Chrome console by pressing ctrl+shift+i and follow the link!")
+    window.alert("Seems like there is a problem with authentication: for more info check the Chrome console by pressing ctrl+shift+j and follow the link!")
   }
 
   getSights = () => {
@@ -108,7 +119,8 @@ class App extends Component {
               selectedPlace={this.state.selectedPlace}
               getSights={this.getSights}
               onMarkerClick={this.onMarkerClick}
-              onMapClicked={this.onMapClicked} />
+              onMapClicked={this.onMapClicked}
+            />
           </div>
         </main>
       </div>
